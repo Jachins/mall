@@ -5,7 +5,7 @@
         </nav-bar>
         <home-swiper :banners="banners" />
         <recommend-view :recommends="recommends"></recommend-view>
-
+        <feature-view />
     </div>
 </template>
 <script>
@@ -17,6 +17,7 @@
 
     import HomeSwiper from './childComps/HomeSwiper';
     import RecommendView from './childComps/RecommendView';
+    import FeatureView from './childComps/FeatureView'
 
 
     export default {
@@ -24,7 +25,8 @@
         components: {
             NavBar,
             HomeSwiper,
-            RecommendView
+            RecommendView,
+            FeatureView
 
         },
         data() {
