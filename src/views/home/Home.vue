@@ -3,7 +3,7 @@
         <nav-bar class="home-nav">
             <div  slot="center">购物街</div>
         </nav-bar>
-        <home-swiper :banners="banners" />
+        <home-swiper :banners="banners"/>
         <recommend-view :recommends="recommends"></recommend-view>
         <feature-view />
     </div>
@@ -47,8 +47,17 @@
     }
 </script>
 <style scoped>
+    #home {
+        padding-top: 44px;
+    }
+    
     .home-nav {
         color: #fff;
         background-color: var(--color-tint);
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9;
     }
 </style>
