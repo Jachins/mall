@@ -1,0 +1,11 @@
+# 对代码的风格进行统一
+root = true
+
+[*] 
+charset=utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+# 是否需要插入空行
+insert_final_newline = true
+trim_trailing_whitespace = true
