@@ -45,9 +45,13 @@
         getHomeMultidata,
         getHomeGoods
     } from 'network/home';
+
     import {
         debounce
     } from 'common/utils';
+    // import {
+    //     itemListenerMixin
+    // } from 'common/mixin';
 
     export default {
         name: 'Home',
@@ -62,6 +66,7 @@
             BackTop
 
         },
+        // mixins: [itemListenerMixin],
         data() {
             return {
                 banners: [],
@@ -85,7 +90,8 @@
                 isShowBackTop: false,
                 tabOffsetTop: 0,
                 isTabFixed: false,
-                saveY: 0
+                saveY: 0,
+                itemImgListener: null
             }
         },
         computed: {
@@ -101,7 +107,11 @@
 
         },
         deactivated() {
+            // 1.保存Y值
             this.saveY = this.$refs.scroll.getScrollY()
+
+            // 2.取消全局事件的监听
+            this.$bus.$off('itemImgLoad', this.itemImgListener)
 
         },
 
@@ -117,15 +127,20 @@
 
         },
         mounted() {
+            // 对this.$refs.scroll.refresh这个函数进行防抖操作
             const refresh = debounce(this.$refs.scroll.refresh, 500)
                 // 3.监听item中图片加载完成
-            this.$bus.$on('itemImageLoad', () => {
 
-                // 图片加载完成之后刷新一次
-                // this.$refs.scroll.refresh()
+            // // 对监听事件进行保存
+            this.itemImgListener = () => {
                 refresh()
-            })
+            }
+            this.$bus.$on('itemImgLoad', this.itemImgListener)
 
+            // 图片加载完成之后刷新一次
+            // this.$refs.scroll.refresh()
+            // refresh()
+            // })
         },
         methods: {
 

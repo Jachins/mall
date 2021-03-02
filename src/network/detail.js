@@ -1,3 +1,4 @@
+// import axios from 'axios';
 import { request } from './request';
 
 export function getDetail(iid) {
@@ -6,6 +7,12 @@ export function getDetail(iid) {
         params: {
             iid
         }
+    })
+}
+
+export function getRecommend() {
+    return request({
+        url: '/recommend'
     })
 }
 
