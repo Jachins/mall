@@ -61,10 +61,10 @@
 
 <style scoped>
     .bottom-bar {
-        height: 35px;
+        height: 30px;
         background-color: #eee;
         position: relative;
-        line-height: 35px;
+        line-height: 30px;
         display: flex;
         /* bottom: 49px; */
     }

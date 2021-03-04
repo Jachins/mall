@@ -10,15 +10,15 @@
 <script>
     // import BScroll from 'better-scroll'
     export default {
-        name: "Category",
-        data() {
-            return {
-                scroll: null
-            }
-        }
-        // ,
-        // //  组件创建完之后调用
-        // mounted() {
+        name: "Category"
+            // data() {
+            //     return {
+            //         scroll: null
+            //     }
+            // }
+            // ,
+            // //  组件创建完之后调用
+            // mounted() {
 
         //     this.scroll = new BScroll(this.$refs.aaaa, {
         //         // probeType: 3,

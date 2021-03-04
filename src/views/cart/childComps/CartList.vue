@@ -34,7 +34,7 @@
 
 <style scoped>
     .cart-list {
-        height: calc(100vh - 130px);
+        height: calc(100vh - 120px);
     }
     
     .content {
