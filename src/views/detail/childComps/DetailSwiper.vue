@@ -33,7 +33,7 @@
 
 <style scoped>
     .swiper1 {
-        height: 350px;
+        height: 300px;
         overflow: hidden;
     }
 </style>

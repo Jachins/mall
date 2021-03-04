@@ -39,19 +39,18 @@
 
     import TabControl from 'components/content/tabControl/TabControl'
     import GoodsList from 'components/content/goods/GoodsList'
-    import BackTop from 'components/content/backTop/BackTop'
+
 
     import {
         getHomeMultidata,
         getHomeGoods
     } from 'network/home';
 
+
     import {
-        debounce
-    } from 'common/utils';
-    // import {
-    //     itemListenerMixin
-    // } from 'common/mixin';
+        itemListenerMixin,
+        backTopMixin
+    } from 'common/mixin';
 
     export default {
         name: 'Home',
@@ -62,11 +61,10 @@
             FeatureView,
             TabControl,
             GoodsList,
-            Scroll,
-            BackTop
+            Scroll
 
         },
-        // mixins: [itemListenerMixin],
+        mixins: [itemListenerMixin, backTopMixin],
         data() {
             return {
                 banners: [],
@@ -87,11 +85,11 @@
                     }
                 },
                 currentType: 'pop',
-                isShowBackTop: false,
+
                 tabOffsetTop: 0,
                 isTabFixed: false,
-                saveY: 0,
-                itemImgListener: null
+                saveY: 0
+                    // itemImgListener: null
             }
         },
         computed: {
@@ -127,20 +125,20 @@
 
         },
         mounted() {
-            // 对this.$refs.scroll.refresh这个函数进行防抖操作
-            const refresh = debounce(this.$refs.scroll.refresh, 500)
-                // 3.监听item中图片加载完成
+            // // 对this.$refs.scroll.refresh这个函数进行防抖操作
+            // const refresh = debounce(this.$refs.scroll.refresh, 500)
+            //     // 3.监听item中图片加载完成
 
-            // // 对监听事件进行保存
-            this.itemImgListener = () => {
-                refresh()
-            }
-            this.$bus.$on('itemImgLoad', this.itemImgListener)
+            // // // 对监听事件进行保存
+            // this.itemImgListener = () => {
+            //     refresh()
+            // }
+            // this.$bus.$on('itemImgLoad', this.itemImgListener)
 
-            // 图片加载完成之后刷新一次
-            // this.$refs.scroll.refresh()
-            // refresh()
-            // })
+            // // 图片加载完成之后刷新一次
+            // // this.$refs.scroll.refresh()
+            // // refresh()
+            // // })
         },
         methods: {
 
@@ -162,9 +160,7 @@
                 this.$refs.tabControl2.currentIndex = index;
 
             },
-            backClick() {
-                this.$refs.scroll.scrollTo(0, 0)
-            },
+
             contentScroll(position) {
                 // 1.判断BackTop是否显示
                 this.isShowBackTop = (-position.y) > 1000;
